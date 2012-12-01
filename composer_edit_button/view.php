@@ -7,7 +7,7 @@ if(!$c->isEditMode()) {
 	$ct = CollectionType::getByID($c->getCollectionTypeID());
 
 	if(is_object($ct)){
-		if($ct->isCollectionTypeIncludedInComposer()){
+		if($cp->canWrite() || $cp->canAddSubContent() || $cp->canAdminPage() || $cp->canApproveCollection()){ 
 			$cp = new Permissions($c);
 			if($cp->canViewToolbar()) { ?>
 				<div id="composer_edit_button<?php echo $bID?>">
